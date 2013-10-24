@@ -1,7 +1,6 @@
 <?php
-$location = $argv[1];
-$path = "/etc/apache2/sites-enabled/";
-// $file_contents = file_get_contents($path."template");
+$location = $argv[1]; //Get first CLI argument 
+$path = "/etc/apache2/sites-enabled/"; //Where vagrant_webroot is
 $file_contents = '<VirtualHost *:80>
   ServerName app.local
   DocumentRoot /vagrant/{{DOC}}
@@ -14,6 +13,5 @@ $file_contents = '<VirtualHost *:80>
 </VirtualHost>
 ';
 $file_contents = str_replace("{{DOC}}", $location, $file_contents);
-file_put_contents($path."vagrant_webroot", $file_contents);
-shell_exec("service apache2 reload");
-// var_dump($argv);
+file_put_contents($path."vagrant_webroot", $file_contents);//Overwrite the new virtualhost
+shell_exec("service apache2 reload");//Restart the apache
