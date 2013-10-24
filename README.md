@@ -35,3 +35,9 @@ You're all set up. The webserver will now be accessible from http://localhost:88
 * vim
 * emacs
 
+## Changing Server Document root
+
+	$ cd /vagrant 
+	$ sudo php chvhost.php "myproject/public"
+
+This sets the server document root to `/vagrant/myproject/public`.
